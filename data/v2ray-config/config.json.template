@@ -3,7 +3,7 @@
         {
             "port": 10000,
             "listen": "0.0.0.0",
-            "protocol": "vmess",
+            "protocol": "vless",
             "settings": {
                 "clients": [
                     {
@@ -13,8 +13,10 @@
                 ]
             },
             "streamSettings": {
-                "network": "ws",
+                 "network": "ws",
+                "security": "none",
                 "wsSettings": {
+                    "alpn":["h2","http/1.1"],
                     "path": "{v2ray_path}"
                 }
             }
