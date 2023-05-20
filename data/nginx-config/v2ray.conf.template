@@ -1,6 +1,6 @@
 
 server {
-    listen 80;
+   listen 80;
 	listen 443 ssl http2;
 	listen [::]:443 ssl http2;
     listen [::]:80;
@@ -30,6 +30,7 @@ server {
     ssl_stapling_verify on;#优化tls速度
     ssl_session_tickets off;#优化tls速度
     resolver 8.8.8.8 8.8.4.4 valid=300s;#优化tls速度
+    resolver_timeout 5s;#优化tls速度00s;#优化tls速度
     resolver_timeout 5s;#优化tls速度
 
 
