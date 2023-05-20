@@ -51,9 +51,6 @@ server {
         return 404;
     }
 
-    location /.well-known/acme-challenge/ {
-        root /var/www/certbot;
-    }
 
     location {v2ray_path} {
 

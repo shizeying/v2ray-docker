@@ -3,19 +3,14 @@ services:
 
   v2ray:
     image: v2fly/v2fly-core:v4.28.2
-    networks:
-      - v2ray
+    network_mode: host
     volumes:
       - ./data/v2ray-config:/etc/v2ray
     restart: always
 
   nginx:
     image: nginx:1.15-alpine
-    ports:
-      - "80:80"
-      - "443:443"
-    networks:
-      - v2ray
+    network_mode: host
     volumes:
       - ./data/nginx-config:/etc/nginx/conf.d
       - ./data/certbot/conf:/etc/letsencrypt
@@ -27,13 +22,9 @@ services:
 
   certbot:
     image: certbot/certbot
-    networks:
-      - v2ray
+    network_mode: host
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     restart: always
-
-networks:
-  v2ray:
