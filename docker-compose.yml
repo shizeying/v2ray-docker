@@ -5,5 +5,5 @@ services:
     image: v2ray/official:latest
     network_mode: host
     volumes:
-      - ./data/v2ray-config/config.json:/etc/v2ray/config.json
+      - ./data/v2ray-config/config2.json:/etc/v2ray/config.json
     restart: always
