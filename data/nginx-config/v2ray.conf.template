@@ -30,7 +30,7 @@ server {
     resolver_timeout 5s;#优化tls速度
 
 
-    ssl_trusted_certificate /www/server/panel/vhost/cert/www.cxx.es/fullchain.pem;#优化tls速度
+    ssl_trusted_certificate /etc/letsencrypt/live/{domain}/fullchain.pem;#优化tls速度
     add_header Strict-Transport-Security "max-age=31536000";
     error_page 497  https://$host$request_uri;
 		#SSL-END
@@ -45,14 +45,10 @@ server {
     #PHP-INFO-END
 
     #REWRITE-START URL重写规则引用,修改后将导致面板设置的伪静态规则失效
-    include /www/server/panel/vhost/rewrite/cxx.es.conf;
-    #REWRITE-END
-
-    #禁止访问的文件或目录
-    location ~ ^/(\.user.ini|\.htaccess|\.git|\.env|\.svn|\.project|LICENSE|README.md)
-    {
-        return 404;
+     location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
     }
+
 
 
     location {v2ray_path} {
