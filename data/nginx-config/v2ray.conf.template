@@ -28,21 +28,12 @@ server {
     ssl_session_tickets off;#优化tls速度
     resolver 8.8.8.8 8.8.4.4 valid=300s;#优化tls速度
     resolver_timeout 5s;#优化tls速度
-
-
     ssl_trusted_certificate /etc/letsencrypt/live/{domain}/fullchain.pem;#优化tls速度
     add_header Strict-Transport-Security "max-age=31536000";
     error_page 497  https://$host$request_uri;
-		#SSL-END
 
-    #ERROR-PAGE-START  错误页配置，可以注释、删除或修改
-    #error_page 404 /404.html;
-    #error_page 502 /502.html;
-    #ERROR-PAGE-END
 
-    #PHP-INFO-START  PHP引用配置，可以注释或修改
-    include enable-php-00.conf;
-    #PHP-INFO-END
+
 
     #REWRITE-START URL重写规则引用,修改后将导致面板设置的伪静态规则失效
      location /.well-known/acme-challenge/ {
