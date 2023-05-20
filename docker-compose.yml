@@ -9,7 +9,7 @@ services:
     restart: always
 
   nginx:
-    image: nginx:1.18-alpine
+    image: nginx
     network_mode: host
     volumes:
       - ./data/nginx-config:/etc/nginx/conf.d
