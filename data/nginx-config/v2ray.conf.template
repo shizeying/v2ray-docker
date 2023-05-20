@@ -24,26 +24,15 @@ server {
     }
 
     location {v2ray_path} {
-        if ($content_type !~ "application/grpc") {
-        return 403;
-      }
         proxy_redirect off;
-          grpc_set_header Connection "";
-                client_body_timeout 300s;
-                client_max_body_size 0;
-                client_body_buffer_size 8k;
-                grpc_connect_timeout 10s;
-                proxy_buffering off;
-                #grpc_buffer_size 100m;
-                grpc_read_timeout 1d;
-                grpc_send_timeout 1d;
-                grpc_socket_keepalive on;
-								#这里就是代理的端口
-                grpc_pass grpc://127.0.0.1:10000;
-                grpc_set_header X-Real-IP $remote_addr;
-                grpc_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                keepalive_timeout 240;#拒绝长连接 优化网络
+        proxy_pass http://v2ray:10000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $http_host;
 
+        # Show realip in v2ray access.log
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
-
 }
