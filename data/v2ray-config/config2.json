@@ -1,13 +1,13 @@
 {
   "inbounds": [
     {
-      "port": 10000,
+      "port": 1000,
       "listen": "0.0.0.0",
       "protocol": "vless",
      "settings": {
         "clients": [
           {
-            "id": "b831381d-6324-4d53-ad4f-8cda48b30811",
+            "id": "01d335f4-0e4a-46be-8beb-0051a77e7071",
             "alterId": 0
           }
         ],
@@ -23,7 +23,7 @@
           "show": false
         },
         "grpcSettings": {
-          "serviceName": "01d335f4-0e4a-46be-8beb-0051a77e7073",
+          "serviceName": "01d335f4-0e4a-46be-8beb-0051a77e7071",
           "multiMode": false,
           "idle_timeout": 120,
           "health_check_timeout": 120,
