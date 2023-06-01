@@ -24,7 +24,10 @@
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/01d335f4-0e4a-46be-8beb-0051a77e7070"
+          "path": "/01d335f4-0e4a-46be-8beb-0051a77e7070",
+          "headers": {
+            "Host": ""
+          }
         }
       }
     },
